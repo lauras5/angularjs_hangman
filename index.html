@@ -1,0 +1,88 @@
+<!doctype html>
+<html ng-app="HangmanApp">
+  <head>
+    <title>AngularJS Hangman Game</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body ng-controller="GameController">
+    <div class="jumbotron">
+      <div class='date'>Last Login: {{ date.toDateString() }} </div>
+      <h1>> PROGRAMMER HANGMAN</h1>
+      <br>
+      <small>Try to solve these programming related mystery words!</small>
+        <!-- for loop to loop through letters in incorrect letter array -->
+      <div>Incorrect Letters: 
+      <span ng-repeat="letter in incorrectLettersChosen">
+        {{letter}}
+      </span>
+      </div>
+    <!-- </div> -->
+      <div>
+        <!-- Correct Letters : 
+        <span ng-repeat="letter in correctLettersChosen">
+          {{letter}}
+        </span>
+      </div> -->
+  
+      <div class='guesses'>You have {{guesses}} guesses left!</div>
+  
+      <div class="word-guess">
+        <div>{{displayWord}}</div>
+      </div>
+      <div>
+        <div>
+          <!-- catch value input by user in controller -->
+          <input type="text" name="guess" ng-model="input.letter" ng-keyup="letterInput()">
+          <br>
+          <small>enter your guesses in the green box above</small>
+          <!-- <button ng-click="letterChosen()">Submit</button> -->
+        </div>
+      </div>
+      </div>
+    <div>
+
+    <div id='winModal' class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">YOU'RE A WINNER!!!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>YOU WON! Play again!</p>
+            </div>
+            <div class="modal-footer">
+              <button data-dismiss="modal" type="button" class="btn btn-primary">New Game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+      <div id='loseModal' class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">WOMP WOMP...</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>You lost! The mystery word was '{{selectedWord}}' Play again!</p>
+            </div>
+            <div class="modal-footer">
+              <button data-dismiss="modal" type="button" class="btn btn-primary">New Game</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
